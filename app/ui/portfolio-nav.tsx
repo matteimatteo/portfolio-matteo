@@ -1,53 +1,69 @@
 'use client';
-
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-import { HomeIcon, UserIcon, DocumentTextIcon, CommandLineIcon } from '@heroicons/react/24/outline';
 
 const links = [
-    { name: 'Home', href: '/', icon: HomeIcon },
-    { name: 'Projets', href: '/projects', icon: CommandLineIcon },
-    { name: 'CV', href: '/cv', icon: DocumentTextIcon },
-    { name: 'A propos', href: '/about', icon: UserIcon },
+    { name: 'Accueil', href: '/' },
+    { name: 'Analyses & Projets', href: '/projects' },
+    { name: 'Profil & CV', href: '/cv' },
+    { name: 'À propos', href: '/about' },
 ];
 
 export default function PortfolioNav() {
     const pathname = usePathname();
-
+    
     return (
-        <div className="flex h-full flex-col px-3 py-4 md:px-2 bg-white border-r border-stone-100">
-            <Link
-                className="mb-6 flex h-32 items-end justify-start rounded-md bg-gradient-to-br from-teal-600 to-emerald-600 p-4 md:h-40 shadow-md transition-transform hover:scale-[1.02]"
-                href="/"
-            >
-                <div className="w-full text-white">
-                    <span className="text-3xl font-bold tracking-tighter">Matteo</span>
-                    <span className="block text-sm font-light opacity-90">Portfolio</span>
+        <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16 md:h-20">
+                    
+                    {/* Typo Logo Minimaliste */}
+                    <Link href="/" className="flex-shrink-0 font-extrabold text-xl tracking-tight text-slate-900 hover:opacity-70 transition-opacity">
+                        MT<span className="text-blue-600">.</span>
+                    </Link>
+                    
+                    {/* Menu Desktop */}
+                    <div className="hidden md:block">
+                        <div className="ml-10 flex items-baseline space-x-2">
+                            {links.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={clsx(
+                                        'px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300',
+                                        {
+                                            'bg-slate-900 text-white shadow-sm': pathname === link.href,
+                                            'text-slate-500 hover:text-slate-900 hover:bg-slate-100': pathname !== link.href,
+                                        },
+                                    )}
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                    
+                    {/* Menu Mobile (Scroll horizontal caché) */}
+                    <div className="md:hidden flex overflow-x-auto space-x-2 py-2 hide-scrollbar">
+                         {links.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={clsx(
+                                        'px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300',
+                                        {
+                                            'bg-slate-900 text-white shadow-sm': pathname === link.href,
+                                            'text-slate-500 hover:text-slate-900 hover:bg-slate-100': pathname !== link.href,
+                                        },
+                                    )}
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                    </div>
                 </div>
-            </Link>
-            <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-4">
-                {links.map((link) => {
-                    const LinkIcon = link.icon;
-                    return (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className={clsx(
-                                'group flex h-[48px] grow items-center justify-center gap-3 rounded-md p-3 text-sm font-medium transition-all duration-300 md:flex-none md:justify-start md:p-2 md:px-3',
-                                {
-                                    'bg-teal-50 text-teal-700 shadow-sm': pathname === link.href,
-                                    'text-stone-500 hover:bg-stone-50 hover:text-teal-600': pathname !== link.href,
-                                },
-                            )}
-                        >
-                            <LinkIcon className="w-5 md:w-6" />
-                            <p className="hidden md:block group-hover:translate-x-1 transition-transform">{link.name}</p>
-                        </Link>
-                    );
-                })}
-                <div className="hidden h-auto w-full grow md:block"></div>
             </div>
-        </div>
+        </nav>
     );
 }

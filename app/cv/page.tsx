@@ -1,143 +1,160 @@
-import { lusitana } from '@/app/ui/fonts';
-import { ArrowDownTrayIcon, BriefcaseIcon, AcademicCapIcon, CpuChipIcon } from '@heroicons/react/24/outline';
+import { ArrowDownTrayIcon, BriefcaseIcon, AcademicCapIcon, ServerStackIcon, LanguageIcon } from '@heroicons/react/24/outline';
 
 export default function Page() {
     return (
-        <main className="w-full animate-fade-in">
-            <div className="flex w-full items-center justify-between mb-8">
-                <h1 className={`${lusitana.className} text-3xl text-teal-800 font-bold`}>Mon CV</h1>
+        <main className="w-full animate-fade-in font-sans pb-12">
+            <div className="flex flex-col md:flex-row w-full items-start md:items-center justify-between mb-12 gap-4">
+                <div>
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-2">Mon Parcours</h1>
+                    <p className="text-slate-500 text-lg">Profil orienté Data Analyst & Ingénierie de la donnée</p>
+                </div>
                 <a
-                    href="/cv-original.png"
-                    download="CV-Matteo-Turpin-Hannequand.png"
-                    className="flex items-center gap-2 rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:bg-teal-500 hover:shadow-lg hover:-translate-y-0.5"
+                    href="/cv-original.jpg"
+                    download="CV-Matteo-Turpin-Hannequand.jpg"
+                    className="flex items-center gap-3 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-slate-800 transition-all shadow-sm hover:shadow-md"
                 >
-                    <ArrowDownTrayIcon className="w-5" />
-                    <span>Télécharger</span>
+                    <ArrowDownTrayIcon className="w-5 h-5" />
+                    <span>Télécharger le CV</span>
                 </a>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-
-                <div className="lg:col-span-2 space-y-8">
-
-                    <section>
-                        <h2 className={`${lusitana.className} flex items-center gap-2 text-2xl mb-6 text-teal-700`}>
-                            <BriefcaseIcon className="w-6 h-6" /> Expériences
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                {/* Colonne Gauche : Expériences (Prend 2 colonnes sur grand écran) */}
+                <div className="lg:col-span-2 space-y-6">
+                    <section className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
+                        <h2 className="flex items-center gap-3 text-2xl font-bold mb-8 text-slate-900 tracking-tight">
+                            <BriefcaseIcon className="w-7 h-7 text-blue-600" /> Expériences Professionnelles
                         </h2>
+                        
+                        <div className="space-y-8">
+                            {/* Expérience Certigna */}
+                            <div className="relative pl-6 border-l-2 border-slate-100">
+                                <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-[7px] top-2 shadow-[0_0_0_4px_white]"></div>
+                                <div className="flex flex-wrap justify-between items-start mb-2 gap-2">
+                                    <h3 className="font-bold text-xl text-slate-900">Stage - Certigna</h3>
+                                    <span className="text-xs font-bold bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full">Mars 2026 - Juin 2026</span>
+                                </div>
+                                <p className="text-blue-600 text-sm font-medium mb-3">Villeneuve d'Ascq</p>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Développement et évolution de modules en PHP et Angular. Mon travail se concentre particulièrement sur l'architecture logicielle, la réalisation de tests unitaires et la <strong>migration de bases de données</strong>, une étape essentielle pour structurer et fiabiliser l'information.
+                                </p>
+                            </div>
 
+                            {/* Expérience Kappa Data */}
+                            <div className="relative pl-6 border-l-2 border-slate-100">
+                                <div className="absolute w-3 h-3 bg-slate-300 rounded-full -left-[7px] top-2 shadow-[0_0_0_4px_white]"></div>
+                                <div className="flex flex-wrap justify-between items-start mb-2 gap-2">
+                                    <h3 className="font-bold text-xl text-slate-900">Stage - Kappa Data France</h3>
+                                    <span className="text-xs font-bold bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full">2025</span>
+                                </div>
+                                <p className="text-slate-500 text-sm font-medium mb-3">EuraTechnologies</p>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Développement d'une authentification 2FA en PHP pour une application web interne. Mise en œuvre de solutions techniques exigeantes dans un contexte strict de cybersécurité et de réseau.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                {/* Colonne Droite : Compétences & Formation */}
+                <div className="space-y-6">
+                    <section className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
+                        <h2 className="flex items-center gap-3 text-xl font-bold mb-6 text-slate-900 tracking-tight">
+                            <LanguageIcon className="w-6 h-6 text-blue-600" /> Langues
+                        </h2>
+                        <div className="space-y-3">
+                            <div className="flex justify-between items-center">
+                                <span className="font-bold text-slate-700">Anglais</span>
+                                <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-semibold">Niveau B2</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span className="font-bold text-slate-700">Français</span>
+                                <span className="bg-slate-50 text-slate-600 px-3 py-1 rounded-lg text-sm font-medium">Langue maternelle</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
+                        <h2 className="flex items-center gap-3 text-2xl font-bold mb-8 text-slate-900 tracking-tight">
+                            <ServerStackIcon className="w-7 h-7 text-blue-600" /> Compétences
+                        </h2>
+                        
                         <div className="space-y-6">
-                            <div className="group rounded-xl bg-white p-6 shadow-sm border border-stone-100 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                                <div className="flex justify-between items-start mb-2">
-                                    <h3 className="font-bold text-lg text-stone-800 group-hover:text-teal-700 transition-colors">Stage Kappa Data France</h3>
-                                    <span className="text-xs font-semibold bg-teal-50 text-teal-700 px-2 py-1 rounded-full">2025</span>
+                            <div>
+                                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Data & BDD</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {['SQL', 'PostgreSQL', 'MongoDB', 'Neo4j', 'Python'].map(skill => (
+                                        <span key={skill} className="bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1.5 rounded-lg text-sm font-semibold">
+                                            {skill}
+                                        </span>
+                                    ))}
                                 </div>
-                                <p className="text-stone-500 text-sm mb-3">EuraTechnologies</p>
-                                <p className="text-stone-700 leading-relaxed">
-                                    Développement d'une authentification <strong>2FA en PHP</strong> pour une application web interne.
-                                    Mise en œuvre de solutions dans un contexte de cybersécurité et de réseau.
-                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Back-end</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {['Java', 'Spring', 'PHP', 'Symfony'].map(skill => (
+                                        <span key={skill} className="bg-slate-50 text-slate-700 border border-slate-200 px-3 py-1.5 rounded-lg text-sm font-semibold">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
 
-                            <div className="group rounded-xl bg-white p-6 shadow-sm border border-stone-100 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                                <div className="flex justify-between items-start mb-2">
-                                    <h3 className="font-bold text-lg text-stone-800 group-hover:text-teal-700 transition-colors">Travail d'été - EHPAD</h3>
-                                    <span className="text-xs font-semibold bg-stone-100 text-stone-600 px-2 py-1 rounded-full">2024</span>
+                            <div>
+                                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Front-end</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {['HTML/CSS', 'Tailwind', 'React', 'Angular'].map(skill => (
+                                        <span key={skill} className="bg-slate-50 text-slate-600 border border-slate-100 px-3 py-1.5 rounded-lg text-sm font-medium">
+                                            {skill}
+                                        </span>
+                                    ))}
                                 </div>
-                                <p className="text-stone-500 text-sm mb-3">Loos-lez-Lille</p>
-                                <p className="text-stone-700 leading-relaxed">
-                                    Installation et aide aux repas pour les résidents, travail en équipe avec le personnel de cuisine et le personnel soignant.
-                                </p>
+                            </div>
+
+                            <div>
+                                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Systèmes & DevOps</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {['Linux/Mac/Windows', 'GIT', 'Docker', 'Podman'].map(skill => (
+                                        <span key={skill} className="bg-slate-100 text-slate-500 border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </section>
 
-                    <section>
-                        <h2 className={`${lusitana.className} flex items-center gap-2 text-2xl mb-6 text-teal-700`}>
-                            <CpuChipIcon className="w-6 h-6" /> Projets
+                    <section className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
+                        <h2 className="flex items-center gap-3 text-2xl font-bold mb-6 text-slate-900 tracking-tight">
+                            <AcademicCapIcon className="w-7 h-7 text-blue-600" /> Éducation
                         </h2>
-                        <div className="rounded-xl bg-white p-6 shadow-sm border border-stone-100 transition-all hover:shadow-md">
-                            <ul className="space-y-4">
-                                <li className="pb-4 border-b border-stone-100">
-                                    <span className="font-bold text-stone-800">SpeedLoc (2025)</span>
-                                    <p className="text-sm text-stone-600 mt-1">Plateforme de location de voitures. (React, Node.js, SQL).</p>
-                                </li>
-                                <li className="pb-4 border-b border-stone-100 last:border-0 last:pb-0">
-                                    <span className="font-bold text-stone-800">Webdesign "Olympass" (2024)</span>
-                                    <p className="text-sm text-stone-600 mt-1">Réalisation d'un projet de groupe complet.</p>
-                                </li>
-                                <li>
-                                    <span className="font-bold text-stone-800">Marathon du web (2024)</span>
-                                    <p className="text-sm text-stone-600 mt-1">Hackathon de 24h. Création d'un projet full-stack (PHP, SQL, Laravel, CSS, GIT) en équipe de 8.</p>
-                                </li>
-                            </ul>
+                        
+                        <div className="space-y-5">
+                            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                                <h3 className="font-bold text-slate-900">Master 1 SIAD</h3>
+                                <p className="text-blue-600 text-sm font-medium">À partir de Sept. 2026</p>
+                                <p className="text-slate-500 text-xs mt-1">Université de Lille</p>
+                            </div>
+                            
+                            <div>
+                                <h3 className="font-bold text-slate-800">BUT Informatique</h3>
+                                <p className="text-slate-500 text-sm">IUT de Lens • 2023 - 2026</p>
+                            </div>
+                            
+                            <div>
+                                <h3 className="font-bold text-slate-800">Baccalauréat Général</h3>
+                                <p className="text-slate-500 text-sm">Mention Bien • 2022 - 2023</p>
+                            </div>
+
+                            <div>
+                                <h3 className="font-bold text-slate-800">Certification PIX</h3>
+                                <p className="text-slate-500 text-sm">2022</p>
+                            </div>
                         </div>
                     </section>
-
                 </div>
-
-                <div className="space-y-8">
-
-                    <section className="bg-white rounded-xl shadow-sm border border-stone-100 p-6 transition-all hover:shadow-md">
-                        <h2 className={`${lusitana.className} text-xl mb-4 text-teal-800 border-b border-stone-100 pb-2`}>Compétences</h2>
-
-                        <div className="space-y-4">
-                            <div>
-                                <h4 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Front-end</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {['HTML/CSS', 'React', 'Next.js', 'Tailwind'].map(skill => (
-                                        <span key={skill} className="bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-emerald-100 transition-colors cursor-default">
-                                            {skill}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Back-end</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {['PHP', 'Laravel', 'Symfony', 'Spring Boot', 'Java', 'Python'].map(skill => (
-                                        <span key={skill} className="bg-teal-50 text-teal-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-teal-100 transition-colors cursor-default">
-                                            {skill}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Base de données</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {['SQL', 'PostgreSQL'].map(skill => (
-                                        <span key={skill} className="bg-stone-100 text-stone-700 px-3 py-1 rounded-full text-sm font-medium cursor-default">
-                                            {skill}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="bg-white rounded-xl shadow-sm border border-stone-100 p-6 transition-all hover:shadow-md">
-                        <h2 className={`${lusitana.className} flex items-center gap-2 text-xl mb-4 text-teal-800 border-b border-stone-100 pb-2`}>
-                            <AcademicCapIcon className="w-5 h-5" /> Education
-                        </h2>
-                        <div className="space-y-4">
-                            <div>
-                                <h3 className="font-bold text-stone-800 text-sm">BUT INFORMATIQUE</h3>
-                                <p className="text-stone-600 text-xs">IUT de Lens • 2023 - 2025</p>
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-stone-800 text-sm">Baccalauréat Général</h3>
-                                <p className="text-stone-600 text-xs">Mention Bien • 2023</p>
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-stone-800 text-sm">Certification PIX</h3>
-                                <p className="text-stone-600 text-xs">2022</p>
-                            </div>
-                        </div>
-                    </section>
-
-                </div>
-
             </div>
         </main>
     );

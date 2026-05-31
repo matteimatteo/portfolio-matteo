@@ -8,13 +8,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>
-        <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-          <div className="w-full flex-none md:w-64">
-            <PortfolioNav />
+    <html lang="fr">
+      <body className={`${inter.className} bg-slate-50 text-slate-900 antialiased`}>
+        <div className="flex min-h-screen flex-col">
+          {/* Top Navigation Bar */}
+          <PortfolioNav />
+          
+          {/* Main Content (avec un padding-top pour compenser la nav fixe) */}
+          <div className="flex-grow pt-28 px-4 md:px-8 max-w-7xl mx-auto w-full">
+            {children}
           </div>
-          <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
         </div>
       </body>
     </html>

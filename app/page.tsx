@@ -1,61 +1,65 @@
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon, CircleStackIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import Image from 'next/image';
-import { lusitana } from '@/app/ui/fonts';
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-gradient-to-r from-teal-600 to-emerald-600 p-4 md:h-52 shadow-md">
-        <h1 className={`${lusitana.className} text-4xl text-white font-bold`}>
-          Portfolio
-        </h1>
-      </div>
-      <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-        <div className="flex flex-col justify-center gap-6 rounded-lg bg-stone-50 px-6 py-10 md:w-2/5 md:px-20">
-          <p className={`${lusitana.className} text-xl text-stone-800 md:text-3xl md:leading-normal`}>
-            <strong>Bonjour, je m'appelle Matteo.</strong>
+    <main className="flex min-h-screen flex-col bg-slate-50 p-4 md:p-8 animate-fade-in font-sans">
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
+        
+        {/* Widget Principal : Présentation */}
+        <div className="md:col-span-2 bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100 flex flex-col justify-center transition-all hover:shadow-md">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
+            Mattéo Turpin-Hannequand
+          </h1>
+          <h2 className="text-xl md:text-2xl font-medium text-slate-500 mb-6 flex items-center gap-3">
+            Futur Data Analyst <span className="text-slate-300">|</span> Master SIAD
+          </h2>
+          
+          {/* Nouveau texte plus humain et naturel */}
+          <p className="text-slate-600 text-lg leading-relaxed mb-8 max-w-2xl">
+            J'aime quand les choses sont claires et bien organisées. Au fil de mon parcours en informatique, j'ai réalisé que ma vraie motivation n'était pas seulement de développer des interfaces, mais surtout de comprendre et manipuler les bases de données qui les font tourner.
+            <br/><br/>
+            Aujourd'hui, j'intègre le <strong>Master SIAD</strong> pour devenir Data Analyst. Je cherche une <strong>alternance de 24 mois</strong> pour plonger dans le concret et me rendre utile sur vos vrais enjeux.
           </p>
-          <p className="text-stone-700">
-            Je suis étudiant en informatique en 3ème année (BUT Informatique).
-            Actuellement à la recherche d'un <strong>stage de 14 semaines</strong> à partir du <strong>16 mars 2026</strong>.
-          </p>
-          <p className="text-stone-700">
-            Passionné par le développement web (Laravel, Symfony, React/Next.js).
-          </p>
-          <div className="flex gap-4">
+          
+          <div className="flex flex-wrap gap-4">
             <Link
               href="/cv"
-              className="flex items-center gap-5 self-start rounded-lg bg-teal-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-500 md:text-base"
+              className="flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-slate-800 transition-all hover:scale-105"
             >
-              <span>Mon CV</span> <ArrowRightIcon className="w-5 md:w-6" />
+              Voir mon profil <ArrowRightIcon className="w-4 h-4" />
             </Link>
             <Link
-              href="/about"
-              className="flex items-center gap-5 self-start rounded-lg bg-stone-200 px-6 py-3 text-sm font-medium text-stone-900 transition-colors hover:bg-stone-300 md:text-base"
+              href="/projects"
+              className="flex items-center gap-3 bg-slate-100 text-slate-900 px-8 py-4 rounded-full text-sm font-semibold hover:bg-slate-200 transition-all"
             >
-              <span>A propos</span>
+              Mes analyses
             </Link>
           </div>
         </div>
-        <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-          <div className="overflow-hidden rounded-lg shadow-xl max-w-md">
-            <Image
-              src="/cv-original.png"
-              width={500}
-              height={700}
-              className="hidden md:block w-full h-auto object-cover"
-              alt="CV de Matteo Turpin-Hannequand"
-            />
-            <Image
-              src="/cv-original.png"
-              width={300}
-              height={400}
-              className="block md:hidden w-full h-auto object-cover"
-              alt="CV de Matteo Turpin-Hannequand"
-            />
+
+        {/* Widget Secondaire : Stack Technique Façon Apple Health */}
+        <div className="flex flex-col gap-6">
+          
+          <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex-1 flex flex-col justify-center items-center text-center transition-all hover:shadow-md">
+            <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-4">
+              <CircleStackIcon className="w-8 h-8" />
+            </div>
+            <h3 className="text-slate-900 font-bold text-lg mb-1">Architecture</h3>
+            <p className="text-slate-500 text-sm">SQL, PostgreSQL, MongoDB, Neo4j</p>
           </div>
+
+          <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex-1 flex flex-col justify-center items-center text-center transition-all hover:shadow-md">
+            <div className="w-16 h-16 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center mb-4">
+              <ChartBarIcon className="w-8 h-8" />
+            </div>
+            <h3 className="text-slate-900 font-bold text-lg mb-1">Analyse</h3>
+            <p className="text-slate-500 text-sm">Python, Excel/Calc, Modélisation</p>
+          </div>
+
         </div>
+
       </div>
     </main>
   );
