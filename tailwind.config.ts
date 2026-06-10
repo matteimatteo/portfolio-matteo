@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'sans-serif'],
+        heading: ['var(--font-space-grotesk)', 'sans-serif'],
+        mono: ['var(--font-jetbrains-mono)', 'monospace'],
+      },
       gridTemplateColumns: {
         '13': 'repeat(13, minmax(0, 1fr))',
       },

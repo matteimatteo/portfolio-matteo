@@ -1,8 +1,13 @@
-import { Inter, Lusitana } from 'next/font/google';
- 
-export const inter = Inter({ subsets: ['latin'] });
- 
-export const lusitana = Lusitana({
-  weight: ['400', '700'],
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+
+export const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+
+export const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
+  variable: '--font-space-grotesk',
+});
+
+export const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
 });
